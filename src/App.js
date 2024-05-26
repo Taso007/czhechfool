@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import GameInfo from './components/GameInfo';
+import PlayerNames from './components/PlayerNames';
+import Game from './components/Game';
+import CardsWinner from './components/CardsWinner';
+import CardsLoser from './components/CardsLoser';
+import { PlayerProvider } from './contexts/PlayerContext';
+import WinnerScreen from './components/WinnerScreen';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+      </div>
+      <PlayerProvider>
+        <Routes>
+            <Route path="/" element={<GameInfo />} />
+            <Route path="/PlayerNames" element={<PlayerNames />}/>
+            <Route path="/Game" element={<Game />} />
+            <Route path="/CardsWinner" element={<CardsWinner/>}/>
+            <Route path='/CardsLoser' element={<CardsLoser/>}/>
+            <Route path='/WinnerScreen' element={<WinnerScreen/>}/>
+          </Routes>
+      </PlayerProvider>
     </div>
   );
 }
 
 export default App;
+
+
+
